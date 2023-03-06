@@ -1,3 +1,10 @@
+This is a lightweight reproduction of Doctolib client side
+
+It will have :
+    - A login page
+    - A form page to setup meetings
+    - A meeting list page
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
