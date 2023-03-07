@@ -21,6 +21,7 @@ export default function Login() {
 
     useEffect (() => {
         if(user) {
+            console.log("logged in!");
             //navigation a form
         }
     }, [user])
@@ -29,20 +30,17 @@ export default function Login() {
 
     return (
         <div>
-            <header></header>
-            <body>
             <form>
                 <label>
                     login :
-                    <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <label>
                     mot de passe :
-                    <input type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
                 <input type="submit" value="Confirmer" onClick={signin} />
             </form>
-            </body>
         </div>
     )
 };
