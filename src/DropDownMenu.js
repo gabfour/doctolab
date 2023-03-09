@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useEffect, useState } from 'react';
-import { collection, getDoc } from "firebase/firestore";
+import { collection, onSnapshot, QuerySnapshot } from "firebase/firestore";
 
 import { db } from "./index";
 
@@ -18,19 +18,12 @@ export default function DropDownMenu() {
         setAnchorEl(null);
     };
 
-    const fetchPost = async () => {
-            
-        await getDoc(collection(db, "doctorList"))
-            .then((querySnapshot)=>{               
-                const newData = querySnapshot.docs
-                    .map((doc) => ({...doc.data(), id:doc.id }));
-                setDoctorList(newData);
-            })
-        }
-
-        useEffect(()=>{
-            fetchPost();
-        }, [])
+    useEffect(()=> 
+        onSnapshot(collection(db, "doctorList"), (snapshot) => {
+            console.log(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            },
+        ),
+    []);
 
     return (
         <div>
@@ -41,7 +34,7 @@ export default function DropDownMenu() {
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
         >
-            Dashboard
+            Doctor List
         </Button>
         <Menu
             id="basic-menu"
@@ -52,9 +45,7 @@ export default function DropDownMenu() {
             'aria-labelledby': 'basic-button',
             }}
         >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={handleClose}>{doctorList.id}</MenuItem>
         </Menu>
         </div>
     );
