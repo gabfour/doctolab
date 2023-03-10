@@ -3,12 +3,12 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useEffect, useState } from 'react';
-import { collection, onSnapshot, QuerySnapshot } from "firebase/firestore";
+import { collection, onSnapshot /*, QuerySnapshot*/ } from "firebase/firestore";
 
 import { db } from "./index";
 
 export default function DropDownMenu() {
-    const [doctorList, setDoctorList] = useState(new Map());
+    const [doctorList /*, setDoctorList*/] = useState(new Map());
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {

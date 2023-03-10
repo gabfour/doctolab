@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSignOut } from 'react-firebase-hooks/auth';
-import { collection, addDoc, getDoc } from "firebase/firestore";
-import { Button, TextField, Menu, MenuItem } from '@mui/material';
+import { collection, addDoc } from "firebase/firestore";
+import { Button, TextField } from '@mui/material';
 import dayjs from 'dayjs';
 import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -24,7 +24,7 @@ export function MeetingForm() {
        
         try {
             const docRef = await addDoc(collection(db, "client"), {
-                nom: String,
+                nom: nom,
                 dateTime: dayjs, 
             });
             console.log("Document written with ID: ", docRef.id);

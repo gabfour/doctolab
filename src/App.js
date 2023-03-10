@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './Login';
-import { app } from './index';
+//import { app } from './index';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './index';
